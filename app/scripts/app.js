@@ -35,6 +35,12 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
+      })
+      .state('contact', {
+        url: '/contact',
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl',
+        controllerAs: 'contact'
       });
     $urlRouterProvider.otherwise('/home');
   });
