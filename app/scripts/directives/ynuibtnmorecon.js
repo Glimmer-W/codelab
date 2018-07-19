@@ -37,14 +37,16 @@
               break;
           }
         }
-      }
+      };
     }])
     .directive('hLight', function () {
       return {
         restrict: 'C',
-        link: function (scope, elem, attr) {
-          var markdownString = elem.html();
-          elem.replaceWith(hljs.highlightAuto(markdownString).value);
+        compile: function(tElem, tAttrs){
+          var markdownString = tElem.html();
+          tElem.replaceWith(hljs.highlightAuto(markdownString).value);
+          return function (scope, ele, attrs) {
+          };
         }
       }
     })

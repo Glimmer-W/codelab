@@ -1,0 +1,18 @@
+.cl-example {
+  position: relative;
+  padding: 45px 15px 15px !important;
+}
+
+.cl-example:after {
+  content: "实例：" !important;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #589569;
+  letter-spacing: 1px;
+}
+.type-hint-boolean {
+
+}

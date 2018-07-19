@@ -11,15 +11,18 @@
         <div class="panel-body">
           <h1>更多条件按钮</h1>
           <div class="panel panel-default">
-            <div class="panel-heading">
-              <yn-ui-btn-more-con></yn-ui-btn-more-con>
+            <div class="panel-heading cl-example">
+              <yn-ui-btn-more-con is-more="isShowMoreCon"></yn-ui-btn-more-con>
+              <div>
+                变量[isShowMoreCon]值：{{isShowMoreCon}}
+              </div>
             </div>
             <div class="panel-body">
               <uib-tabset active="active" type="tabs">
                 <uib-tab heading="html">
                   <pre>
-                    <code class="html h-light">
-                      <yn-ui-btn-more-con></yn-ui-btn-more-con>;
+                    <code class="html hljs code-area">
+                      <div class="h-light"><yn-ui-btn-more-con is-more="isShowMoreCon"></yn-ui-btn-more-con></div>
                     </code>
                   </pre>
                 </uib-tab>
@@ -27,13 +30,37 @@
                   <pre>
                     <code class="js hljs">
                       <div class="h-light">
-                        var content = document.getElementById('content');
-                        console.log(content);
-                        console.log();
-                        //content.replaceWith(marked('<p>这是段落！</p><h1>这是标题</h1>'));
-                         content.replaceWith(document.getElementById('code').innerHTML);
-                    //content.innerHTML =marked('# Marked in the browser\n\nRendered by **marked**.');
-                    //content.innerHTML = marked('<p>这是段落！</p>');
+                        function ComponentCtrl($scope) {
+                          // 是否显示更多条件
+                          $scope.isShowMoreCon = false;
+                        }
+                      </div>
+
+                    </code>
+                  </pre>
+                </uib-tab>
+                <uib-tab heading="源码">
+                  <pre>
+                    <code class="js hljs">
+                      <div class="h-light">
+                        function ynUiBtnMoreConDirective() {
+                          return {
+                            restrict: "AE",
+                            scope: {
+                              isMore: "=?" //是否展示更多条件
+                            },
+                            // 设置模板
+                            template: function () {
+                              return '<button type="button" class="btn btn-link" ng-click="isMore = !isMore">' +
+                                '{{isMore ? "收起" : "更多"}}' +
+                                '<i ng-class="{\'fa fa-angle-up\': isMore, \'fa fa-angle-down\': !isMore}"></i>' +
+                                '</button>'
+                            },
+                            link: function ($scope, iElement, iAttrs) {
+
+                            }
+                          };
+                        }
                       </div>
 
                     </code>
@@ -42,6 +69,23 @@
               </uib-tabset>
             </div>
           </div>
+          <h4>参数</h4>
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>参数</th>
+              <th>类型</th>
+              <th>详情</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>isMore</td>
+              <td><a href class="bg-green">boolean</a></td>
+              <td>可绑定数据的angular表达式，控制是否显示“更多”条件，默认不显示</td>
+            </tr>
+            </tbody>
+          </table>
           <p>Basic panel example</p>
           <p>Basic panel example</p>
           <p>Basic panel example</p>
