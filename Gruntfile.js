@@ -24,7 +24,7 @@ module.exports = function (grunt) {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
-
+  console.log("appConfig", '<%= appConfig.app %> ' + 'components/ynWebComponent');
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -220,7 +220,7 @@ module.exports = function (grunt) {
             }
           }
       }
-    }, 
+    },
 
     // Renames files for browser caching purposes
     filerev: {
@@ -345,6 +345,26 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>',
         src: 'views/{,*/}*.html',
         dest: '.tmp/templateCache.js'
+      },
+      yn: {
+        options: {
+          // angular.module 的名称，模板缓存会将这个名称注册为模板要缓存的模块
+          module: 'yn.web.component.tpls',
+          // htmlmin: '<%= htmlmin.dist.options %>',
+          prefix: 'yn'
+          // usemin: 'scripts/scripts.js'
+        },
+        // 所有src指定的匹配都将相对于此处指定的路径（但不包括此路径）。
+        cwd: 'yn',
+        src: 'templates/{,**/}*.html',
+        dest: '.yn/template.js'
+      }
+    },
+
+    concat: {
+      yn: {
+        src: ['yn/scripts/*.js', 'yn/scripts/{,**/}*.js', '<%= ngtemplates.yn.dest %>'],
+        dest: '.yn/yn-web-component-tpls.js'
       }
     },
 
@@ -399,6 +419,12 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      yn: {
+        expand: true,
+        cwd: '.yn',
+        src: 'yn-web-component-tpls.js',
+        dest: 'app/components/yn/'
       }
     },
 
@@ -424,6 +450,7 @@ module.exports = function (grunt) {
         singleRun: true
       }
     }
+
   });
 
 
@@ -447,6 +474,11 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
+  grunt.registerTask('yn', '自定义任务', function () {
+    grunt.log.warn('执行自定义任务');
+    grunt.task.run(['ngtemplates:yn', 'concat:yn', 'copy:yn']);
+  });
+
   grunt.registerTask('test', [
     'clean:server',
     'wiredep',
@@ -462,7 +494,7 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concurrent:dist',
     'postcss',
-    'ngtemplates',
+    'ngtemplates:dist',
     'concat',
     'ngAnnotate',
     'copy:dist',

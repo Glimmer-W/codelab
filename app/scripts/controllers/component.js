@@ -8,7 +8,7 @@
  * Controller of the codelabApp
  */
 angular.module('codelabApp')
-  .controller('ComponentCtrl', function ($scope) {
+  .controller('ComponentCtrl', function ($scope, $timeout) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -27,27 +27,24 @@ angular.module('codelabApp')
     $scope.content = "<yn-ui-btn-more-con></yn-ui-btn-more-con>";
     // 是否显示更多条件
     $scope.isShowMoreCon = false;
+
+    $scope.options = [];
+    var arr =[
+      {id: 1, name: "张三"},
+      {id: 2, name: "李四"},
+      {id: 3, name: "王五"}
+    ];
+
+    $timeout(function () {
+      $scope.options = arr;
+    }, 2000);
+
+    $scope.selectedOptions = [1,2,3];
+
+    $scope.onSelectedOption = function (options) {
+      console.log("调用父容器的方法", options);
+    }
+
   });
 
-function ComponentCtrl($scope) {
-  // 是否显示更多条件
-  $scope.isShowMoreCon = false;
-}
-function ynUiBtnMoreConDirective() {
-  return {
-    restrict: "AE",
-    scope: {
-      isMore: "=?" //是否展示更多条件
-    },
-    // 设置模板
-    template: function () {
-      return '<button type="button" class="btn btn-link" ng-click="isMore = !isMore">' +
-        '{{isMore ? "收起" : "更多"}}' +
-        '<i ng-class="{\'fa fa-angle-up\': isMore, \'fa fa-angle-down\': !isMore}"></i>' +
-        '</button>'
-    },
-    link: function ($scope, iElement, iAttrs) {
 
-    }
-  };
-}

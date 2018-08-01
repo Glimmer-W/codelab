@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('codelabApp', ['ui.router', 'wl.ng.component', 'ui.bootstrap'])
+  .module('codelabApp', ['ui.router', 'ui.bootstrap', 'yn.web.component'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {

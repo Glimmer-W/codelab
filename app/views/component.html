@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron cl-docs-header">
   <div class="container">
     <h1>组件</h1>
     <p>无数可复用的组件，包括字体图标、下拉菜单、导航、警告框、弹出框等更多功能。</p>
@@ -43,24 +43,17 @@
                   <pre>
                     <code class="js hljs">
                       <div class="h-light">
-                        function ynUiBtnMoreConDirective() {
+                        angular.module('yn.ui.buttons')
+                        .directive('ynUiBtnMoreCon', function () {
                           return {
-                            restrict: "AE",
-                            scope: {
-                              isMore: "=?" //是否展示更多条件
-                            },
-                            // 设置模板
-                            template: function () {
-                              return '<button type="button" class="btn btn-link" ng-click="isMore = !isMore">' +
-                                '{{isMore ? "收起" : "更多"}}' +
-                                '<i ng-class="{\'fa fa-angle-up\': isMore, \'fa fa-angle-down\': !isMore}"></i>' +
-                                '</button>'
-                            },
-                            link: function ($scope, iElement, iAttrs) {
-
-                            }
+                              restrict: "AE",
+                              scope: {
+                                  isMore: "=?" //是否展示更多条件
+                              },
+                              // 设置模板
+                              templateUrl: 'yn/templates/directives/buttons/morecondition/morecondition.html'
                           };
-                        }
+                        });
                       </div>
 
                     </code>
@@ -81,86 +74,79 @@
             <tbody>
             <tr>
               <td>isMore</td>
-              <td><a href class="bg-green">boolean</a></td>
+              <td><a href class="bg-green type-hint-boolean">boolean</a></td>
               <td>可绑定数据的angular表达式，控制是否显示“更多”条件，默认不显示</td>
             </tr>
             </tbody>
           </table>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
-          <p>Basic panel example</p>
+          <h1>下拉选择</h1>
+          <div class="panel panel-default">
+            <div class="panel-heading cl-example">
+              <div>
+                <yn-ui-pc-select options="options"  placeholder="'请选择'" ng-model="selectedOptions" on-selected="onSelectedOption(options)"></yn-ui-pc-select>
+              </div>
+              <div>
+                变量[selectedOptions]值：{{selectedOptions}}
+              </div>
+            </div>
+            <div class="panel-body">
+              <uib-tabset active="active" type="tabs">
+                <uib-tab heading="html">
+                  <pre>
+                    <code class="html hljs code-area">
+                      <div class="h-light"><yn-ui-btn-more-con is-more="isShowMoreCon"></yn-ui-btn-more-con></div>
+                    </code>
+                  </pre>
+                </uib-tab>
+                <uib-tab heading="js">
+                  <pre>
+                    <code class="js hljs">
+                      <div class="h-light">
+                        function ComponentCtrl($scope) {
+                          // 是否显示更多条件
+                          $scope.isShowMoreCon = false;
+                        }
+                      </div>
+
+                    </code>
+                  </pre>
+                </uib-tab>
+                <uib-tab heading="源码">
+                  <pre>
+                    <code class="js hljs">
+                      <div class="h-light">
+
+                      </div>
+
+                    </code>
+                  </pre>
+                </uib-tab>
+              </uib-tabset>
+            </div>
+          </div>
+          <h4>参数</h4>
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>参数</th>
+              <th>类型</th>
+              <th>详情</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>isMore</td>
+              <td><a href class="bg-green type-hint-boolean">boolean</a></td>
+              <td>可绑定数据的angular表达式，控制是否显示“更多”条件，默认不显示</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
     <div class="col-lg-2">
       <div class="list-group">
         <a href="#" class="list-group-item active">更多条件按钮</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
-        <a href="#" class="list-group-item">...</a>
         <a href="#" class="list-group-item">...</a>
         <a href="#" class="list-group-item">...</a>
         <a href="#" class="list-group-item">...</a>

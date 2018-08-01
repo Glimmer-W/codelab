@@ -1,0 +1,29 @@
+<div class="btn-group select-group btn-ib">
+  <button class="btn btn-default btn-ib dropdown-toggle" type="button" data-toggle="dropdown"
+          title="{{vm.title ? vm.title : vm.placeholder}}">
+    {{vm.title ? vm.title : vm.placeholder}}<i class="fa fa-angle-down"></i>
+  </button>
+  <div class="dropdown-menu dropdown-content hold-on-click">
+      <!--搜索开始-->
+      <div class="input-icon input-group-sm input-inline" ng-if="vm.useSearch">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control" placeholder="搜索..." ng-model="vm.searchText"
+               ng-change="vm.searchOption()">
+      </div>
+      <!--搜索结束-->
+
+      <div class="select-items dropdown-checkboxes no-space">
+        <label ng-if="vm.options.length == 0">没有相关数据！</label>
+        <label ng-repeat="option in vm.options" ng-if="option.isShow">
+          <input type="checkbox" ng-model="option.isChecked"  ng-change="vm.selectOption(evt)"/>{{vm.getOptionText(option)}}
+        </label>
+      </div>
+
+      <!--全选开始-->
+      <div class="select-group-bottom">
+        <label>
+          <input type="checkbox" ng-model="vm.isCheckedAll" ng-change="vm.selectAllOption()"/>全选</label>
+      </div>
+      <!--全选结束-->
+  </div>
+</div>
