@@ -45,6 +45,18 @@ angular.module('codelabApp')
       console.log("调用父容器的方法", options);
     }
 
+    /***************下拉单选-start*******************/
+    $scope.singleSelectOptions = [];
+    var arr =[
+      {id: "", name: "全部"},
+      {id: 1, name: "张三asdfffffffffffffffffffffffffffffffffffff"},
+      {id: 2, name: "李四"},
+      {id: 3, name: "王五"}
+    ];
+    $scope.singleSelectOptions = arr;
+    $scope.selectedOption = 2;
+    /***************下拉单选-end*******************/
+
   });
 
 

@@ -79,7 +79,7 @@
             </tr>
             </tbody>
           </table>
-          <h1>下拉选择</h1>
+          <h1>下拉选择（多选）</h1>
           <div class="panel panel-default">
             <div class="panel-heading cl-example">
               <div>
@@ -87,6 +87,68 @@
               </div>
               <div>
                 变量[selectedOptions]值：{{selectedOptions}}
+              </div>
+            </div>
+            <div class="panel-body">
+              <uib-tabset active="active" type="tabs">
+                <uib-tab heading="html">
+                  <pre>
+                    <code class="html hljs code-area">
+                      <div class="h-light"><yn-ui-btn-more-con is-more="isShowMoreCon"></yn-ui-btn-more-con></div>
+                    </code>
+                  </pre>
+                </uib-tab>
+                <uib-tab heading="js">
+                  <pre>
+                    <code class="js hljs">
+                      <div class="h-light">
+                        function ComponentCtrl($scope) {
+                          // 是否显示更多条件
+                          $scope.isShowMoreCon = false;
+                        }
+                      </div>
+
+                    </code>
+                  </pre>
+                </uib-tab>
+                <uib-tab heading="源码">
+                  <pre>
+                    <code class="js hljs">
+                      <div class="h-light">
+
+                      </div>
+
+                    </code>
+                  </pre>
+                </uib-tab>
+              </uib-tabset>
+            </div>
+          </div>
+          <h4>参数</h4>
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>参数</th>
+              <th>类型</th>
+              <th>详情</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>isMore</td>
+              <td><a href class="bg-green type-hint-boolean">boolean</a></td>
+              <td>可绑定数据的angular表达式，控制是否显示“更多”条件，默认不显示</td>
+            </tr>
+            </tbody>
+          </table>
+          <h1>下拉选择（单选）</h1>
+          <div class="panel panel-default">
+            <div class="panel-heading cl-example">
+              <div>
+                <yn-ui-sing-select options="singleSelectOptions" use-search="true" ng-model="selectedOption"></yn-ui-sing-select>
+              </div>
+              <div>
+                变量[selectedOption]值：{{selectedOption}}
               </div>
             </div>
             <div class="panel-body">
