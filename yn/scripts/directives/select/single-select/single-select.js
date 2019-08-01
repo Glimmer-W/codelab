@@ -148,6 +148,7 @@ angular.module('yn.ui.selects')
          * 指令自定渲染，处理model数据改变时，选中数据项
          */
         function render() {
+          vm.selectedOption = null;
           angular.forEach(vm.options, function (option) {
             if (ctrl.$viewValue == option[optionValue]) {
               vm.selectedOption = option;

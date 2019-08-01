@@ -10,3 +10,5 @@ angular.module('yn.web.component.tpls', []);
 
 angular.module('yn.web.component', ['yn.web.component.tpls', 'yn.ui']);
 
+angular.module('yn.ui.uploader', []);
+

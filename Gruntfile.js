@@ -358,6 +358,19 @@ module.exports = function (grunt) {
         cwd: 'yn',
         src: 'templates/{,**/}*.html',
         dest: '.yn/template.js'
+      },
+      photo: {
+        options: {
+          // angular.module 的名称，模板缓存会将这个名称注册为模板要缓存的模块
+          module: 'starter',
+          // htmlmin: '<%= htmlmin.dist.options %>',
+          // prefix: 'yn'
+          // usemin: 'scripts/scripts.js'
+        },
+        // 所有src指定的匹配都将相对于此处指定的路径（但不包括此路径）。
+        cwd: 'yn',
+        src: 'templates/directives/uploader/*.html',
+        dest: '.photo/template.js'
       }
     },
 
@@ -365,6 +378,10 @@ module.exports = function (grunt) {
       yn: {
         src: ['yn/scripts/*.js', 'yn/scripts/{,**/}*.js', '<%= ngtemplates.yn.dest %>'],
         dest: '.yn/yn-web-component-tpls.js'
+      },
+      photo: {
+        src: ['yn/scripts/directives/uploader/*.js', '<%= ngtemplates.photo.dest %>'],
+        dest: '.photo/photo-uploader-tpls.js'
       }
     },
 
@@ -477,6 +494,11 @@ module.exports = function (grunt) {
   grunt.registerTask('yn', '自定义任务', function () {
     grunt.log.warn('执行自定义任务');
     grunt.task.run(['ngtemplates:yn', 'concat:yn', 'copy:yn']);
+  });
+
+  grunt.registerTask('photo', '自定义任务', function () {
+    grunt.log.warn('执行自定义任务: photo!');
+    grunt.task.run(['ngtemplates:photo', 'concat:photo']);
   });
 
   grunt.registerTask('test', [

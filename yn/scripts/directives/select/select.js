@@ -94,7 +94,7 @@ angular.module('yn.ui.selects')
         vm.searchOption = function () {
           angular.forEach(vm.options, function (option) {
             if (vm.searchText) {
-              option.isShow = option[ynUiPcSelectConfig.optionText].indexOf(vm.searchText) != -1;
+              option.isShow = option[optionText].indexOf(vm.searchText) != -1;
             } else {
               option.isShow = true;
             }

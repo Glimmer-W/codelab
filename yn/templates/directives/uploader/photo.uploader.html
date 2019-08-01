@@ -1,0 +1,33 @@
+<div class="image-upload-wrap clearfix">
+  <ul class="image-list">
+    <li ng-repeat="photo in vm.photos">
+      <div class="image">
+        <img ng-src="{{photo.uri}}" ng-click="vm.previewPhoto(photo)">
+        <div ng-if="photo.uploadInfo.showProgressBar" class="progress"
+             ng-class="{'error': photo.uploadInfo.uploadFailure()}">
+          <div class="progress-bar" ng-style="{'width': photo.uploadInfo.progress}">
+            <span ng-click="vm.retry(photo)" ng-if="photo.uploadInfo.uploadFailure()">重试</span>
+            <span ng-if="photo.uploadInfo.uploadSuccess()">已上传</span>
+          </div>
+        </div>
+      </div>
+      <span class="delete" ng-click="vm.deletePhoto(photo.fsId, $index)">-</span>
+    </li>
+    <li class="picker-wrap">
+      <div class="imagePicker" ng-click="vm.selectPhoto()">+</div>
+    </li>
+  </ul>
+</div>
+<script id="choosePhoto.html" type="text/ng-template">
+  <div class="modal modal-btm modal-height">
+    <div class="modal-list-wrap">
+      <div class="list-heading clearfix">
+        请选择<span class="calm" ng-click="vm.modal.hide()">取消</span>
+      </div>
+      <ul class="list-wrap text-center">
+        <li class="list-item" ng-click="vm.selectPhotosFromAlbums()">从相册选择照片</li>
+        <li class="list-item" ng-click="vm.takePicture()">直接拍照</li>
+      </ul>
+    </div>
+  </div>
+</script>
